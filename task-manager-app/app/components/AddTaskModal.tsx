@@ -1,68 +1,76 @@
 import React from 'react';
+import { taskStore } from '../stores/taskStore';
 
 interface AddTaskModalProps {
   handleCloseModal: () => void;
 }
 
-const AddTaskModal: React.FC<AddTaskModalProps> = ({handleCloseModal}) => {
-// State variables for the task details
-    const [title, setTitle] = React.useState('');
-    const [description, setDescription] = React.useState('');
-    // const [isModalOpen, setModalOpen] = React.useState<boolean>(false);  
-// Handler for submitting the task
-    const handleSubmit = () => {
-// Perform validation and add the task
-// Reset the input fields
+const AddTaskModal: React.FC<AddTaskModalProps> = ({ handleCloseModal }) => {
+  const [title, setTitle] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  const [error, setError] = React.useState('');
+  const handleSubmit = () => {
+    
+    if (!title || !description) {
+      setError('These fields cannot be empty');
+      return;
+    }
+    
+    // Perform validation and add the task
+    const newTask = {
+      id: Date.now(),
+      title,
+      description,
+      status: 'To-Do',
+    };
+
+    taskStore.addTask(newTask);
+
+    // Reset the input fields
     setTitle('');
     setDescription('');
+
     handleCloseModal();
-    };
-// Close the modal
-// You can use a state variable or props to control the modal visibility
-  //   const handleCloseModal = () => {
-  //   setModalOpen(false);
-  // };
+  };
+
   return (
-    <div> 
-    {/* <button className="btn" onClick={() => window.my_modal_3.showModal()}>
-      Add New Task
-    </button> */}
-    <dialog id="my_modal_3" className="modal modal-open">
-      <form method="dialog" className="modal-box relative">
-        <div>
-        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={handleCloseModal}>✕</button>
-        </div>
-        <h3 className="font-bold text-lg">Add New Task</h3>
-        <div>
-          <label htmlFor="title" className="block">
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            placeholder="Type here"
-            className="input input-bordered input-primary w-full max-w-xs"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="description" className="block">
-            Description
-          </label>
-          <textarea
-            id="description"
-            placeholder="Type here"
-            className="input input-bordered input-primary w-full max-w-xs"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <button className="btn" onClick={handleSubmit}>
-          Submit
-        </button>
-      </form>
-    </dialog>
+    <div>
+      <dialog id="my_modal_3" className="modal modal-open">
+        <form method="dialog" className="modal-box relative">
+          <div>
+            <button
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              onClick={handleCloseModal}
+            >
+              ✕
+            </button>
+          </div>
+          <h3 className="font-bold text-lg mb-1.5">Add New Task</h3>
+          <div>
+            <input
+              type="text"
+              id="title"
+              placeholder="Title"
+              className="input input-bordered input-primary w-full my-1 max-w-sm"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div>
+            <textarea
+              id="description"
+              placeholder="Description"
+              className="input input-bordered input-primary h-48 w-full my-1 max-w-sm max-h-48"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          {error && <p className="text-red-500">{error}</p>}
+          <button className="btn" onClick={handleSubmit}>
+            Submit
+          </button>
+        </form>
+      </dialog>
     </div>
   );
 };
