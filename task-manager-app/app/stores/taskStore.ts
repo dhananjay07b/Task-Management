@@ -1,7 +1,7 @@
 "use client"
 import { types, Instance } from 'mobx-state-tree';
 import { create } from 'mobx-persist';
-import localForage from 'localforage'; // or import other storage libraries
+import localForage from 'localforage-observable'; // or import other storage libraries
 
 // Define the task model
 const TaskModel = types.model('Task', {
@@ -20,7 +20,12 @@ const TaskStore = types
     addTask(task: typeof TaskModel.Type) {
       self.tasks.push(task);
     },
-    // ... other actions
+    updateTaskStatus(taskId: number, newStatus: string) {
+        const task = self.tasks.find((t) => t.id === taskId);
+        if (task) {
+          task.status = newStatus;
+        }
+      },
   }));
 
 // Create an instance of the task store
