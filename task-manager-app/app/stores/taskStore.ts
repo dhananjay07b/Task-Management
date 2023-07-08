@@ -1,5 +1,5 @@
 "use client"
-import { types, Instance } from 'mobx-state-tree';
+import { types, Instance, destroy } from 'mobx-state-tree';
 import { create } from 'mobx-persist';
 import localForage from 'localforage-observable'; // or import other storage libraries
 
@@ -21,11 +21,17 @@ const TaskStore = types
       self.tasks.push(task);
     },
     updateTaskStatus(taskId: number, newStatus: string) {
-        const task = self.tasks.find((t) => t.id === taskId);
-        if (task) {
-          task.status = newStatus;
-        }
-      },
+      const task = self.tasks.find((t) => t.id === taskId);
+      if (task) {
+        task.status = newStatus;
+      }
+    },
+    deleteTask(taskId: number) {
+      const taskIndex = self.tasks.findIndex((t) => t.id === taskId);
+      if (taskIndex !== -1) {
+        destroy(self.tasks[taskIndex]);
+      }
+    },
   }));
 
 // Create an instance of the task store
