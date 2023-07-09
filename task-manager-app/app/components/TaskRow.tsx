@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { FaRegTrashCan } from 'react-icons/fa6';
+import { FaRegTrashCan} from 'react-icons/fa6';
+import { FaRegEdit } from 'react-icons/fa';
 
 interface TaskRowProps {
   task: {
@@ -11,9 +12,10 @@ interface TaskRowProps {
   };
   handleStatusChange: (taskId: number, newStatus: string) => void;
   handleDeleteTask: (taskId: number) => void;
+  handleEditTask: (taskId: number) => void;
 }
 
-const TaskRow: React.FC<TaskRowProps> = observer(({ task, handleStatusChange, handleDeleteTask }) => {
+const TaskRow: React.FC<TaskRowProps> = observer(({ task, handleStatusChange, handleDeleteTask, handleEditTask }) => {
   const { id, title, description, status } = task;
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -23,7 +25,12 @@ const TaskRow: React.FC<TaskRowProps> = observer(({ task, handleStatusChange, ha
   const handleDelete = () => {
     handleDeleteTask(id);
   };
-
+  
+  const handleEdit = () => {
+    handleEditTask(id);
+  };
+  
+  
   return (
     <tr className="hover">
       <td className="max-w-sm overflow-hidden whitespace-nowrap overflow-ellipsis">
@@ -39,7 +46,8 @@ const TaskRow: React.FC<TaskRowProps> = observer(({ task, handleStatusChange, ha
         </select>
       </td>
       <td className="flex justify-center pt-7">
-          <FaRegTrashCan cursor ="pointer" className='text-red-500 hover:text-red-600' size={20} onClick={handleDelete}/>
+        <FaRegEdit cursor ="pointer" className='text-blue-500 hover:text-blue-600'size={20} onClick={handleEdit}/>
+        <FaRegTrashCan cursor ="pointer" className='text-red-500 hover:text-red-600' size={20} onClick={handleDelete}/>
       </td>
     </tr>
   );

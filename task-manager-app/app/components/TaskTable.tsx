@@ -14,6 +14,21 @@ const TaskTable: React.FC = observer(() => {
     deleteTask(taskId);
   };
 
+  const handleEditTask = (taskId: number) => {
+    // Retrieve the task by ID
+    const task = tasks.find((t) => t.id === taskId);
+    if (task) {
+      // Prompt the user to enter new values for title and description
+      const newTitle = prompt('Enter a new title:', task.title);
+      const newDescription = prompt('Enter a new description:', task.description);
+
+      // Update the task with the new values
+      if (newTitle !== null && newDescription !== null) {
+        taskStore.editTask(taskId, newTitle, newDescription);
+      }
+    }
+  };
+
   return (
     <div className="overflow-fixed">
       <table className="table">
@@ -36,6 +51,7 @@ const TaskTable: React.FC = observer(() => {
               task={task}
               handleStatusChange={handleStatusChange}
               handleDeleteTask={handleDeleteTask}
+              handleEditTask={handleEditTask}
             />
           ))}
         </tbody>

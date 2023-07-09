@@ -32,6 +32,14 @@ const TaskStore = types
         destroy(self.tasks[taskIndex]);
       }
     },
+    editTask(taskId: number, newTitle: string, newDescription: string) {
+        const task = self.tasks.find((t) => t.id === taskId);
+        if (task) {
+          task.title = newTitle;
+          task.description = newDescription;
+        }
+      },
+
   }));
 
 // Create an instance of the task store
