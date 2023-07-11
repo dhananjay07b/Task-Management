@@ -1,8 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Management App
+A simple task management application built with Next.js
 
-## Getting Started
+## Table of Contents
 
-First, run the development server:
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation and Usage](#installation-and-usage)
+- [Contributing](#contributing)
+
+## Introduction
+The Task Manager App is a web application that allows you to create and manage tasks efficiently. It provides a user-friendly interface for adding, updating, and deleting tasks. The application is built using Next.js, Tailwind CSS, React, and MobX, making it fast and responsive.
+
+## Features
+* Add new tasks with a title, description
+* Update the status of tasks (To-Do, In Progress, Completed)
+* Edit task details such as the Title and Description
+* Delete tasks from the list
+* Data persistence using local storage
+* Responsive design for optimal viewing on various devices
+
+## Installation and Usage
+
+Clone the repository:
+
+```bash
+git clone https://github.com/dhananjay07b/Task-Management.git
+```
+
+Install the dependencies:
+
+```bash
+cd Task-Management
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -14,21 +46,14 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use the interface to manage your tasks. Tasks will be persisted in the browser's local storage.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+You can start editing the page by modifying `./app/page.tsx`. The page auto-updates as you edit the file.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feel free to reach out to me for further discussions on emerging technologies or any other topics of interest.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Keep the Code Alive !
