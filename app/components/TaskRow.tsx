@@ -14,6 +14,7 @@ interface TaskRowProps {
   };
   handleStatusChange: (taskId: number, newStatus: string) => void;
   handleDeleteTask: (taskId: number) => void;
+  handleEditTask: (taskId: number) => void;
 }
 
 const TaskRow: React.FC<TaskRowProps> = observer(({ task, handleStatusChange, handleDeleteTask }) => {

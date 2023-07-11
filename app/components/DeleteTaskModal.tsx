@@ -30,11 +30,11 @@ const DeleteTaskModal: React.FC<DeleteTaskModalProps> = ({
           <h3 className="font-bold text-lg mb-1.5">Confirm Delete Task</h3>
           <p>Are you sure you want to delete this task?</p>
           <div className="flex justify-end mt-3">
-            <button className="btn btn-red mr-2" onClick={handleDelete}>
-              Confirm
-            </button>
-            <button className="btn" onClick={handleCloseModal}>
+            <button className="btn mr-2 mt-1" onClick={handleCloseModal}>
               Cancel
+            </button>
+            <button className="btn mt-1" onClick={handleDelete}>
+              Confirm
             </button>
           </div>
         </div>
