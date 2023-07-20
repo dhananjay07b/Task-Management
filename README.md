@@ -30,7 +30,7 @@ git clone https://github.com/dhananjay07b/Task-Management.git
 Install the dependencies:
 
 ```bash
-cd Task-Management
+cd Dashboard
 npm install
 ```
 
