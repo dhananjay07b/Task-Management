@@ -54,11 +54,20 @@ You can start editing the page by modifying `./app/page.tsx`. The page auto-upda
 
 ## Screenshots
 
-Home Page:
+### Home Page:
 
 <img src="./public/ss1.png" alt="home" style="vertical-align:top; margin:4px">
+
+### Add Task:
+
 <img src="./public/ss2.png" alt="add" style="vertical-align:top; margin:4px">
+
+### Edit Task:
+
 <img src="/public/ss3.png" alt="edit" style="vertical-align:top; margin:4px">
+
+### Delete Task
+
 <img src="./public/ss4.png" alt="delete" style="vertical-align:top; margin:4px">
 
 ## Contributing
